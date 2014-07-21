@@ -1,3 +1,3 @@
-class GamePlayers < ActiveRecord::Base
+class Score < ActiveRecord::Base
   # Remember to create a migration!
 end
