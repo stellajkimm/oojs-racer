@@ -1,33 +1,34 @@
 $(document).ready(function(){
-  var players = {
-    //Player 1
-    $(document).on('keypress', function(e){
-      e.preventDefault();
-      var activeTd = $('#player1_strip td.active');
-      var lastTd = $('#player1_strip td').last();
+  var game = {
 
-      if ( e.which === 97 ){
-        $(activeTd).next().addClass('active');
-        $(activeTd).removeClass('active');
-      }
-      if( lastTd.hasClass('active') ){
-        gameOver(1);
-      }
-    });
+    var player1 = { $(document).on('keypress', function(e){
+        e.preventDefault();
+        var activeTd = $('#player1_strip td.active');
+        var lastTd = $('#player1_strip td').last();
 
-    //Player 2
-    $(document).keypress(function(e){
-      e.preventDefault();
-      var activeTd = $('#player2_strip td.active');
-      var lastTd = $('#player2_strip td').last();
-      if( e.which === 112 ){
-        $(activeTd).next().addClass('active');
-        $(activeTd).removeClass('active');
-      }
-      if( lastTd.hasClass('active') ){
-        gameOver(2);
-      }
-    })
+        if ( e.which === 97 ){
+          $(activeTd).next().addClass('active');
+          $(activeTd).removeClass('active');
+        }
+        if( lastTd.hasClass('active') ){
+          gameOver(1);
+        }
+      });
+    }
+
+    var player2 = { $(document).keypress(function(e){
+        e.preventDefault();
+        var activeTd = $('#player2_strip td.active');
+        var lastTd = $('#player2_strip td').last();
+        if( e.which === 112 ){
+          $(activeTd).next().addClass('active');
+          $(activeTd).removeClass('active');
+        }
+        if( lastTd.hasClass('active') ){
+          gameOver(2);
+        }
+      })
+    }
   }
 
   function gameOver(playerNumber){
@@ -37,12 +38,21 @@ $(document).ready(function(){
     if (question == true){
       restartGame();
     }else{
-      console.log("poop");
-    }
+      $.ajax({
+        url: '/score_screen',
+        data: "hello",
+        success: function(data){
 
+        },
+        fail: function(){
+          alert("There was an error. BACK TO THE SANDBOX")
+          $.get('/')
+        }
+      })
+    }
   }
+
   function restartGame(){
-    console.log("butt");
     $('#player1_strip td').first().next().addClass('active');
     $('#player2_strip td').first().next().addClass('active');
     $('#player1_strip td').last().removeClass('active');
