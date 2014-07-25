@@ -8,7 +8,7 @@ post '/login' do
     session[:user_id] = @user.id
     redirect '/'
   else
-    @errors = @user.errors
+    @errors = "Please enter a valid email/password combo"
     erb :login
   end
 end
@@ -25,7 +25,7 @@ post '/signup' do
   end
 end
 
-get 'logout' do
+get '/logout' do
   session.clear
   redirect '/login'
 end
