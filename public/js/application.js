@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  var game = {
-
-    var player1 = { $(document).on('keypress', function(e){
+  var game = function() {
+    this.player1 = $(document).on('keypress', function(e){
+        console.log("hi")
         e.preventDefault();
         var activeTd = $('#player1_strip td.active');
         var lastTd = $('#player1_strip td').last();
@@ -14,9 +14,8 @@ $(document).ready(function(){
           gameOver(1);
         }
       });
-    }
 
-    var player2 = { $(document).keypress(function(e){
+    var player2 = $(document).keypress(function(e){
         e.preventDefault();
         var activeTd = $('#player2_strip td.active');
         var lastTd = $('#player2_strip td').last();
@@ -29,7 +28,6 @@ $(document).ready(function(){
         }
       })
     }
-  }
 
   function gameOver(playerNumber){
     $(document).off();
@@ -58,4 +56,7 @@ $(document).ready(function(){
     $('#player1_strip td').last().removeClass('active');
     $('#player2_strip td').last().removeClass('active');
   }
+  $('button#start_game').on('click', function(e){
+    game();
+  })
 });
