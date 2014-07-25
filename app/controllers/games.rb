@@ -16,6 +16,6 @@ post '/game' do
 end
 
 get '/scorescreen' do
-  @played_games = PlayedGame.all
+  @played_games = PlayedGame.all.order(created_at: :desc)
   erb :score_screen
 end
