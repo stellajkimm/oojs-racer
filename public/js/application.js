@@ -37,10 +37,11 @@ $(document).ready(function(){
       restartGame();
     }else{
       $.ajax({
-        url: '/score_screen',
-        data: "hello",
+        type: "POST",
+        url: '/game',
+        // data: "hello",
         success: function(data){
-
+          $('body').html(data)
         },
         fail: function(){
           alert("There was an error. BACK TO THE SANDBOX")
