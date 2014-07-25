@@ -1,3 +1,8 @@
+<table>
+  <th>Player</th><th>Score</th>
 <% @played_games.each do |played_game| %>
-  <%= played_game.score %>
+  <tr>
+    <td><%= played_game.user.name %></td>
+    <td><%= played_game.score %></td>
+  </tr>
 <% end %>
