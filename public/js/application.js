@@ -51,10 +51,11 @@ $(document).ready(function(){
     }
 
     var restartGame = function(){
-      $('#player1_strip td').first().next().addClass('active');
-      $('#player2_strip td').first().next().addClass('active');
-      $('#player1_strip td').last().removeClass('active');
-      $('#player2_strip td').last().removeClass('active');
+      $('#player1_strip td.active').removeClass('active');
+      $('#player2_strip td.active').removeClass('active');
+      $('#player1_strip td:nth-child(2)').addClass('active');
+      $('#player2_strip td:nth-child(2)').addClass('active');
+      game();
     }
   }
 
