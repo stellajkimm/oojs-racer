@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
-  has_many :scores
-  has_many :users, through: :scores
+  has_many :played_games
+  has_many :users, through: :played_games
 
   validate :has_two_players, on: :update
 
