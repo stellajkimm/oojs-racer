@@ -5,7 +5,7 @@ function Player(name, avatar){
 }
 
 Player.prototype = {
-  move: function(keyCode, track){
+  move: function(track){
     this.position ++
     track.updatePosition(this.position)
   }
@@ -18,8 +18,8 @@ function Track(trackNumber){
 
 Track.prototype = {
   updatePosition: function(playerPosition){
-    console.log($(this.track+" td.active").removeClass('active'))
-    console.log($(this.track+" td:nth-child("+playerPosition+")").addClass('active'))
+    $(this.track+" td.active").removeClass('active')
+    $(this.track+" td:nth-child("+playerPosition+")").addClass('active')
   }
 }
 
@@ -29,11 +29,19 @@ function Game(players, tracks){
 }
 
 Game.prototype = {
+  listenForKey: function(keyCode, player, track){
+    $(document).on('keypress', function(e){
+      if(e.which === keyCode){
+        player.move(track)
+      }
+    })
+  },
   checkForWin: function(keyCode){
     // if player.position == 10,
     // win
   }
 }
+
 
 $(document).ready(function(){
   // var players = [ new Player('df', 'car'), new Player('fd', 'stella') ]
@@ -42,6 +50,9 @@ $(document).ready(function(){
   // game.start();
   var track = new Track("#player1_strip")
   var player = new Player("hello", "car")
-  player.move(86, track)
+  var game = new Game(player, track)
+
+  game.listenForKey(97, player, track)
+
 
 })
