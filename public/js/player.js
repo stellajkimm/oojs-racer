@@ -25,20 +25,23 @@ Track.prototype = {
 
 function Game(players, tracks){
   var track = new Track
-
+  this.finished = false;
 }
 
 Game.prototype = {
   listenForKey: function(keyCode, player, track){
     $(document).on('keypress', function(e){
-      if(e.which === keyCode){
+      if(e.which === keyCode && game.finished == false){
+        game.checkForWin(player);
         player.move(track)
       }
     })
   },
-  checkForWin: function(keyCode){
-    // if player.position == 10,
-    // win
+  checkForWin: function(player){
+    if(player.position === 10){
+      alert("yay!")
+      this.finished = true
+    }
   }
 }
 
@@ -51,7 +54,6 @@ $(document).ready(function(){
   var track = new Track("#player1_strip")
   var player = new Player("hello", "car")
   var game = new Game(player, track)
-
   game.listenForKey(97, player, track)
 
 
