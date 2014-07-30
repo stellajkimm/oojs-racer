@@ -4,6 +4,7 @@ class CreatePlayedGames < ActiveRecord::Migration
       t.references :user
       t.references :game
       t.integer :score
+      t.string :avatar
 
       t.timestamps
     end
