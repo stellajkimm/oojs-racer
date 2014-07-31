@@ -1,7 +1,9 @@
-function Player(name, avatar){
+function Player(name, avatar, track, keyCode){
   this.name = name;
   this.avatar = avatar;
   this.position = 2;
+  this.track = track
+  this.keyCode = keyCode
 }
 
 Player.prototype = {
@@ -23,22 +25,29 @@ Track.prototype = {
   }
 }
 
-function Game(players, tracks){
-  var track = new Track
+function Game(players){
+  this.players = players
   this.finished = false;
 }
 
 Game.prototype = {
-  listenForKey: function(keyCode, player, track){
-    $(document).on('keypress', function(e){
-      if(e.which === keyCode && game.finished == false){
-        game.checkForWin(player);
-        player.move(track)
-      }
-    })
+  listenForKey: function(){
+    console.log(this.players)
+    var that = this
+    $(document).on('keyup', function(e){
+      for(i=0; i < that.players.length; i++){
+        console.log(that.players[i].keyCode)
+        console.log(e.which)
+        if(e.which == that.players[i].keyCode && that.finished == false){
+          console.log("hi")
+          that.checkForWin(that.players[i]);
+          that.players[i].move(that.players[i].track)
+        } // end if
+      } // end for
+    }) // end listenForKey
   },
   checkForWin: function(player){
-    if(player.position === 10){
+    if(player.position === 13){
       alert("yay!")
       this.finished = true
     }
@@ -51,10 +60,12 @@ $(document).ready(function(){
   // var game = new Game(players)
   //
   // game.start();
-  var track = new Track("#player1_strip")
-  var player = new Player("hello", "car")
-  var game = new Game(player, track)
-  game.listenForKey(97, player, track)
+  var track1 = new Track("#player1_strip")
+  var track2 = new Track("#player2_strip")
+  var players = [new Player("hello", "car", track1, 65),
+                 new Player("goodbye", "person", track2, 80)]
+  var game = new Game(players)
+  game.listenForKey()
 
 
 })
