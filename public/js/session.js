@@ -4,14 +4,16 @@ $(document).ready(function(){
     $('#signup-button').hide();
     $('#signup-form').show();
   })
-  $('#test1').on('click', function(e){
+  $('#player-1-login').on('click', function(e){
     // $('#test').hide();
     $('.login-modal').css('visibility', 'visible');
+    $('#avatar1').css('visibility', 'visible');
     $('#container').css('opacity', '0.5')
   })
-  $('#test2').on('click', function(e){
+  $('#player-2-login').on('click', function(e){
     // $('#test').hide();
     $('.login-modal2').css('visibility', 'visible');
+    $('#avatar2').css('visibility', 'visible');
     $('#container').css('opacity', '0.5')
   })
   $('.login-form').on('submit', function(e){

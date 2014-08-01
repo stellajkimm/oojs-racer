@@ -1,19 +1,27 @@
 <div class="login-modal">
   <%= erb :'login/_login_form' %>
 </div>
+<div id="avatar1">
+  <%= erb :'login/_choose_avatar' %>
+</div>
+
 <div class="login-modal2">
   <%= erb :'login/_login_form_two' %>
 </div>
+<div id="avatar2">
+  <%= erb :'login/_choose_avatar' %>
+</div>
+
 <div id="container">
   <%= erb :'login/_login' %>
+  <a id="start_game" href="/"><button>Start Game</button></a>
+  <button id="reset_game">Reset Game</button>
 
-  <button id="start_game">Start</button>
-  <button id="reset_game">Reset</button>
-  
   <table class="racer_table">
-    <tr id="player1_strip" data-player-one="<%= @player1.name %>">
-      <td>Player1</td>
+    <tr id="player1_strip" data-player-one="<%= @player1.name %>" data-avatar="<%=@player1.played_games.last.avatar_id%>"
+      data-avatar-image="<%= @player1_avatar_image %>">
       <td class="active"></td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>
@@ -34,9 +42,10 @@
       <td></td>
       <td></td>
     </tr>
-    <tr id="player2_strip" data-player-two="<%= @player2.name %>">
-      <td>Player2</td>
+    <tr id="player2_strip" data-player-two="<%= @player2.name %>" data-avatar="<%=@player2.played_games.last.avatar_id%>"
+      data-avatar-image="<%= @player1_avatar_image %>">
       <td class="active"></td>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>

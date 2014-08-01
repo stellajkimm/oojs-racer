@@ -1,10 +1,10 @@
 function Player(name, avatar, track, keyCode){
   this.name = name;
   this.avatar = avatar;
-  this.position = 2;
+  this.position = 1;
   this.track = track
   this.keyCode = keyCode
-}
+  }
 
 Player.prototype = {
   move: function(){
@@ -13,7 +13,7 @@ Player.prototype = {
   },
   backToStart: function(){
     console.log("backToStart")
-    this.position = 2;
+    this.position = 1;
     this.track.updatePosition(this.position)
   }
 }
@@ -28,16 +28,21 @@ Track.prototype = {
     console.log("updatePosition")
     $(this.track+" td.active").removeClass('active')
     $(this.track+" td:nth-child("+playerPosition+")").addClass('active')
+    
   }
 }
 
 function Game(players){
   this.players = players
-  this.finished = false;
+  this.finished = true;
   this.scores = {}
 }
 
 Game.prototype = {
+  startGame: function() {
+    this.finished = false;
+    this.listenForKey();
+  },
   listenForKey: function(){
     var that = this
     $(document).on('keyup', function(e){
@@ -95,8 +100,8 @@ $(document).ready(function(){
   var playerOneName = $('#player1_strip').data("player-one")
   var playerTwoName = $('#player2_strip').data("player-two")
 
-  var playerOneAvatar = $('#player1_strip').data("avatar")
-  var playerTwoAvatar = $('#player2_strip').data("avatar")
+  var playerOneAvatar = $('#player1_strip').data("avatar-image")
+  var playerTwoAvatar = $('#player2_strip').data("avatar-image")
 
   var track1 = new Track("#player1_strip")
   var track2 = new Track("#player2_strip")
@@ -105,7 +110,9 @@ $(document).ready(function(){
                  new Player(playerTwoName, playerTwoAvatar, track2, 80)]
   var game = new Game(players)
 
-  game.listenForKey()
+  $('#start_game').on("click", function(){
+    game.startGame();
+  })
 
   $("#reset_game").on("click", function(){
     game.resetGame();

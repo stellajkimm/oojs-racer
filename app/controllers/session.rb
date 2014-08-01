@@ -1,5 +1,5 @@
 get '/login' do
-  erb :login
+  erb :'login/_login'
 end
 
 post '/login' do
@@ -7,10 +7,11 @@ post '/login' do
   p @user_one
   if @user_one && @user_one.authenticate(params[:password])
     session[:user_one] = @user_one.id
-    erb :login
+    # @user_one.played_games.new(avatar_id: params[:avatar])
+    erb :'login/_login'
   else
     @errors = "Please enter a valid email/password combo"
-    erb :login
+    erb :'login/_login'
   end
 end
 
@@ -18,10 +19,11 @@ post '/login_two' do
   @user_two = User.find_by(email: params[:email])
   if @user_two && @user_two.authenticate(params[:password])
     session[:user_two] = @user_two.id
-    erb :login
+    # @user_two.played_games.new(avatar_id: params[:avatar])
+    erb :'login/_login'
   else
     @errors = "Please enter a valid email/password combo"
-    erb :login
+    erb :'login/_login'
   end
 end
 
@@ -33,7 +35,7 @@ post '/signup' do
     redirect '/login'
   else
     @errors = @user.errors.messages
-    erb :login
+    erb :'login/_login'
   end
 end
 
