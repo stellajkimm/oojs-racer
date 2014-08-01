@@ -7,9 +7,14 @@ function Player(name, avatar, track, keyCode){
 }
 
 Player.prototype = {
-  move: function(track){
+  move: function(){
     this.position ++
-    track.updatePosition(this.position)
+    this.track.updatePosition(this.position)
+  },
+  backToStart: function(){
+    console.log("backToStart")
+    this.position = 2;
+    this.track.updatePosition(this.position)
   }
 }
 
@@ -20,6 +25,7 @@ function Track(trackNumber){
 
 Track.prototype = {
   updatePosition: function(playerPosition){
+    console.log("updatePosition")
     $(this.track+" td.active").removeClass('active')
     $(this.track+" td:nth-child("+playerPosition+")").addClass('active')
   }
@@ -63,10 +69,19 @@ Game.prototype = {
       url: "/game",
       data: this.scores,
     }).done(function(response){
-      $('body').html(response)
+      // $('body').html(response)
+      console.log(response.success)
     }).fail(function(response){
 
     })
+  },
+  resetGame: function(){
+    console.log("resetGame")
+    this.finished = false;
+    for(i in this.players){
+      this.players[i].backToStart()
+    // this.players.forEach(backToStart());
+    }
   }
 }
 
@@ -89,7 +104,11 @@ $(document).ready(function(){
   var players = [new Player(playerOneName, playerOneAvatar, track1, 65),
                  new Player(playerTwoName, playerTwoAvatar, track2, 80)]
   var game = new Game(players)
+
   game.listenForKey()
 
+  $("#reset_game").on("click", function(){
+    game.resetGame();
+  })
 
 })
