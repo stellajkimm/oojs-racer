@@ -1,13 +1,15 @@
-get '/' do
+get '/' do # not functional currently
   if session[:user_id] != nil
-    @user = User.find(session[:user_id])
+    @user = User.find(session[:user_one])
     erb :game
   else
     redirect '/login'
   end
 end
+
 post '/game' do
-  @user = User.find(session[:user_id])
+  @user_one = User.find(session[:user_one])
+  @user_two = User.find(session[:user_two])
   @game = Game.create(winner: @user.name)
   @score = PlayedGame.create(user_id: @user.id,
                              game_id: @game.id,

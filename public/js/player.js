@@ -28,29 +28,44 @@ Track.prototype = {
 function Game(players){
   this.players = players
   this.finished = false;
+  this.scores = {}
 }
 
 Game.prototype = {
   listenForKey: function(){
-    console.log(this.players)
     var that = this
     $(document).on('keyup', function(e){
       for(i=0; i < that.players.length; i++){
-        console.log(that.players[i].keyCode)
-        console.log(e.which)
         if(e.which == that.players[i].keyCode && that.finished == false){
-          console.log("hi")
-          that.checkForWin(that.players[i]);
           that.players[i].move(that.players[i].track)
+          that.checkForWin(that.players[i]);
         } // end if
       } // end for
     }) // end listenForKey
   },
   checkForWin: function(player){
-    if(player.position === 13){
+    if(player.position === 21){
       alert("yay!")
       this.finished = true
+      this.recordScores();
     }
+  },
+  recordScores: function() {
+    for(i=0; i < this.players.length; i++){
+      this.scores[this.players[i].name] = this.players[i].position
+      console.log(this.scores)
+    }
+  },
+  sendScore: function(){
+    $.ajax({
+      type: "POST",
+      url: "/game",
+      data: this.scores,
+    }).done(function(response){
+
+    }).fail(function(response){
+
+    })
   }
 }
 

@@ -1,13 +1,14 @@
 body {
-  display: inline;
-  width: 600px;
-  margin: 0 auto 0 auto;
+  /*width: 600px;*/
+  height: 600px;
+  margin: 0 auto;
+  text-align: center;
   /*border: 1px solid black;*/
 }
 
 .racer_table {
-  width: 600px;
-  margin: 100px auto 0 auto;
+  width: 80%;
+  margin: 250px auto 0 auto;
   }
 
 .racer_table td {
