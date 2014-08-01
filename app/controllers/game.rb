@@ -17,7 +17,9 @@ post '/game' do
     @game.played_games.create(user_id: @user_one.id, score: params[@user_one.name], avatar_id: 1, won: false)
     @game.played_games.create(user_id: @user_two.id, score: params[@user_two.name], avatar_id: 2, won: true)
   end
-  erb :score_screen, layout: false
+  # erb :score_screen, layout: false
+  # content_type: :json
+  # { success: "success" }.to_json
 end
 
 get '/scorescreen' do

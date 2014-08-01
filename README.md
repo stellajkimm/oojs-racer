@@ -12,15 +12,16 @@ Games
 * looks for win  
 * starts game  
 
-* Login
+* Login/Sign Up
 player 1 top-left side of menu
 player 2 top-right side of menu
-when signed in, name shows up and avatar is placed on the track asynchronously
-
-* Sign up
-start button in top-middle of page, pops out with modal
+modal pops up to enter information and pick avatar
+when signed in, name and user scoreboard button shows up in respectivecorner, and avatar is placed on the track asynchronously
 
 * Start Button
 with modal with a 3 second countdown
 
 * Nyan Cat Racer
+play audio randomly timed
+players race on track in laps
+game ends when music stops

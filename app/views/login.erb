@@ -1,20 +1,20 @@
-<p><%= @errors if @errors %></p>
-<div id="login">
-  <form id="login-form" action="/login" method="post">
-    Player 1: <input type="text" name="email_one" placeholder="Enter your email">
-    <input type="password" name="password_one" placeholder="Enter your password"><br>
-    Player 2: <input type="text" name="email_two" placeholder="Enter your email">
-    <input type="password" name="password_two" placeholder="Enter your password"><br>
-    <input type="submit" value="Let the games begin">
-  </form>
+<div id="login-modal">
+  <% 2.times do |i| %>
+    <% @login_no = i %>
+    <%= erb :_login %>
+  <% end %>
 </div>
-<br>
-<div id="name">
-  <button id="signup-button">Sign up!</button>
-  <form id="signup-form" action="/signup" method="post">
-    <input type="text" name="user[name]" placeholder="Enter your name">
-    <input type="text" name="user[email]" placeholder="Enter your email">
-    <input type="password" name="user[password]" placeholder="Enter your password">
-    <input type="submit" value="Sign up">
-  </form>
+<div id="container">
+  <p><%= @errors if @errors %></p>
+  <button id="test">Test</button>
+  <br>
+  <div id="name">
+    <button id="signup-button">Sign up!</button>
+    <form id="signup-form" action="/signup" method="post">
+      <input type="text" name="user[name]" placeholder="Enter your name">
+      <input type="text" name="user[email]" placeholder="Enter your email">
+      <input type="password" name="user[password]" placeholder="Enter your password">
+      <input type="submit" value="Sign up">
+    </form>
+  </div>
 </div>
