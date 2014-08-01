@@ -77,7 +77,14 @@ Game.prototype = {
       data: this.scores,
     }).done(function(response){
       console.log(response)
-      $('body').html(response)
+      $('#scorescreen').html(response)
+      $('#scorescreen').css('visibility', 'visible');
+      $('#container').css('opacity', '0.5')
+      $('#scorescreen').on('click', function(){
+        $('#scorescreen').css('visibility', 'hidden');
+        $('#container').css('opacity', '1')
+      })
+
       console.log(response.success)
     }).fail(function(response){
 
