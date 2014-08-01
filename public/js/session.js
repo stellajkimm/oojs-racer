@@ -3,6 +3,5 @@ $(document).ready(function(){
   $('#signup-button').on('click', function(e){
     $('#signup-button').hide();
     $('#signup-form').show();
-
   })
 })

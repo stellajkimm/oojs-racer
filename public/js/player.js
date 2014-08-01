@@ -53,10 +53,11 @@ Game.prototype = {
   recordScores: function() {
     for(i=0; i < this.players.length; i++){
       this.scores[this.players[i].name] = this.players[i].position
-      console.log(this.scores)
     }
+    this.sendScore();
   },
   sendScore: function(){
+    console.log(this.scores)
     $.ajax({
       type: "POST",
       url: "/game",
@@ -75,10 +76,18 @@ $(document).ready(function(){
   // var game = new Game(players)
   //
   // game.start();
+  // var trackOne = document.getElementById("player1_strip")
+  var playerOneName = $('#player1_strip').data("player-one")
+  var playerTwoName = $('#player2_strip').data("player-two")
+
+  var playerOneAvatar = $('#player1_strip').data("avatar")
+  var playerTwoAvatar = $('#player2_strip').data("avatar")
+
   var track1 = new Track("#player1_strip")
   var track2 = new Track("#player2_strip")
-  var players = [new Player("hello", "car", track1, 65),
-                 new Player("goodbye", "person", track2, 80)]
+
+  var players = [new Player(playerOneName, playerOneAvatar, track1, 65),
+                 new Player(playerTwoName, playerTwoAvatar, track2, 80)]
   var game = new Game(players)
   game.listenForKey()
 

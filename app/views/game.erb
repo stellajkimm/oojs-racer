@@ -3,7 +3,7 @@
 <button id="reset_game">Reset</button>
 
 <table class="racer_table">
-  <tr id="player1_strip">
+  <tr id="player1_strip" data-player-one="<%= @player1.name %>">
     <td>Player1</td>
     <td class="active"></td>
     <td></td>
@@ -26,7 +26,7 @@
     <td></td>
     <td></td>
   </tr>
-  <tr id="player2_strip">
+  <tr id="player2_strip" data-player-two="<%= @player2.name %>">
     <td>Player2</td>
     <td class="active"></td>
     <td></td>
