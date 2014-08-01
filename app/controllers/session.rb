@@ -3,13 +3,22 @@ get '/login' do
 end
 
 post '/login' do
-  @user_one = User.find_by(email: params[:email_one])
-  @user_two = User.find_by(email: params[:email_two])
-  if @user_one && @user_one.authenticate(params[:password_one]) &&
-     @user_two && @user_two.authenticate(params[:password_two])
+  @user_one = User.find_by(email: params[:email])
+  p @user_one
+  if @user_one && @user_one.authenticate(params[:password])
     session[:user_one] = @user_one.id
+    erb :login
+  else
+    @errors = "Please enter a valid email/password combo"
+    erb :login
+  end
+end
+
+post '/login_two' do
+  @user_two = User.find_by(email: params[:email])
+  if @user_two && @user_two.authenticate(params[:password])
     session[:user_two] = @user_two.id
-    redirect '/'
+    erb :login
   else
     @errors = "Please enter a valid email/password combo"
     erb :login

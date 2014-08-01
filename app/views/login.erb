@@ -1,12 +1,14 @@
-<div id="login-modal">
-  <% 2.times do |i| %>
-    <% @login_no = i %>
-    <%= erb :_login %>
-  <% end %>
+<div class="login-modal">
+  <%= erb :_login %>
+</div>
+<div class="login-modal2">
+  <%= erb :_login_two %>
 </div>
 <div id="container">
   <p><%= @errors if @errors %></p>
-  <button id="test">Test</button>
+  <button id="test1">Test1</button>
+  <button id="test2">Test2</button>
+  <a href="/"><button>start game</button></a>
   <br>
   <div id="name">
     <button id="signup-button">Sign up!</button>
