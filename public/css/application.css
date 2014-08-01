@@ -32,6 +32,11 @@ body {
   background-color: pink;
 }
 
+.radio-avatar {
+  width: 100px;
+  height: auto;
+}
+
 .login-form {
   margin: 20px auto;
 }

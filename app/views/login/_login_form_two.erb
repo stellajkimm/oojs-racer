@@ -1,0 +1,9 @@
+<form class="login-form2" action="/login_two" method="post">
+  <input type="text" name="email" placeholder="Enter your email">
+  <input type="password" name="password" placeholder="Enter your password"><br><br>
+  Choose an avatar:<br><br>
+  <% @avatars.each do |avatar| %>
+    <input type="radio" name="group1" value="<%= avatar.id %>"><img class="radio-avatar" src="<%=avatar.image_url%>">
+  <% end %><br><br>
+  <input type="submit" value="Let the games begin">
+</form>

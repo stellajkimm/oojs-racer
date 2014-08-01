@@ -9,7 +9,7 @@ User.create(name: "armen", email: "armen@armen.armen", password: "armen")
 
 Avatar.create(name: "narwhal", image_url: "http://fc04.deviantart.net/fs70/f/2013/140/9/8/cute_little_narwhal_by_fallenstar20-d65z1e4.png")
 Avatar.create(name: "moon", image_url: "http://www.jojopix.com/wp-content/uploads/2014/06/moon-clip-art-10.gif")
-Avatar.create(name: "hippo", image_url: "http://bestclipartblog.com/clipart-pics/hippopotamus-clipart-14.jpg")
+Avatar.create(name: "hippo", image_url: "http://illpop.com/img_illust/animal2/hippo_a03.png")
 Avatar.create(name: "nyan cat", image_url: "http://img1.wikia.nocookie.net/__cb20130608144609/anime-arts/images/7/7a/Nyan_cat_by_kkiittuuss-d4k5mf8.png")
 
 # 10.times{ Game.create(winner: User.all.sample.name) }

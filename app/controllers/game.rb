@@ -1,6 +1,7 @@
 get '/' do # not functional currently
   @player1 = User.find(session[:user_one])
   @player2 = User.find(session[:user_two])
+  @avatars = Avatar.all
   erb :game
 end
 
