@@ -6,6 +6,11 @@ body {
   /*border: 1px solid black;*/
 }
 
+.racer_table td {
+  width: 100%;
+  background-image: url("http://s3.amazonaws.com/spoonflower/public/design_thumbnails/0124/8012/rrrrWizard_of_Oz_-_Yellow_Brick_Road_mirror.png");
+}
+
 .login-modal {
   left: 5%;
   top: 100px;
