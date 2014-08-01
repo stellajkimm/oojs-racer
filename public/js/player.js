@@ -8,12 +8,12 @@ function Player(track, keyCode){
 Player.prototype = {
   move: function(){
     this.position ++
-    this.track.updatePosition(this.position)
+    this.track.updatePosition(this)
   },
   backToStart: function(){
     console.log("backToStart")
     this.position = 1;
-    this.track.updatePosition(this.position)
+    this.track.updatePosition(this)
   }
 }
 
@@ -23,11 +23,12 @@ function Track(trackNumber){
 }
 
 Track.prototype = {
-  updatePosition: function(playerPosition){
+  updatePosition: function(player){
     console.log("updatePosition")
+    $(this.track+" td.active").html("")
     $(this.track+" td.active").removeClass('active')
-    $(this.track+" td:nth-child("+playerPosition+")").addClass('active')
-
+    $(this.track+" td:nth-child("+player.position+")").addClass('active')
+    $(this.track+" td:nth-child("+player.position+")").html('<img src="' + player.avatar + '" height="42" width="42" >')
   }
 }
 
@@ -107,12 +108,14 @@ $(document).ready(function(){
 
   var game = new Game(players)
 
-  $('#start_game').on("click", function(){
-    game.startGame();
+  $('#start_game').on("click", function(e){
+    e.preventDefault();
+    $.get('/', function(response){
+      game.startGame();
+    })
   })
 
   $("#reset_game").on("click", function(){
     game.resetGame();
   })
-
 })

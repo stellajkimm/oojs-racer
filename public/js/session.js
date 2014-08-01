@@ -47,6 +47,12 @@ $(document).ready(function(){
   $('#avatar1 .choose-avatar div').on('click', function(){
       $(this).parent().parent().css('visibility', 'hidden');
       player1.avatar = $(this).children().attr('src')
-      $('#player1_strip td:first-child').append('<img src="' + player1.avatar + '" height="42" width="42" >')
+      $('#player1_strip td:first-child').html('<img src="' + player1.avatar + '" height="42" width="42" >')
+  })
+
+  $('#avatar2 .choose-avatar div').on('click', function(){
+      $(this).parent().parent().css('visibility', 'hidden');
+      player2.avatar = $(this).children().attr('src')
+      $('#player2_strip td:first-child').html('<img src="' + player2.avatar + '" height="42" width="42" >')
   })
 })

@@ -76,7 +76,7 @@ body {
 }
 
 #avatar2 {
-  left: 5%;
+  right: 5%;
   top: 100px;
   position: absolute;
   visibility: hidden;
