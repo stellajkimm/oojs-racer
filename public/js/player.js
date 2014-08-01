@@ -1,6 +1,5 @@
-function Player(name, avatar, track, keyCode){
-  this.name = name;
-  this.avatar = avatar;
+function Player(track, keyCode){
+  this.avatar = "";
   this.position = 1;
   this.track = track
   this.keyCode = keyCode
@@ -28,7 +27,7 @@ Track.prototype = {
     console.log("updatePosition")
     $(this.track+" td.active").removeClass('active')
     $(this.track+" td:nth-child("+playerPosition+")").addClass('active')
-    
+
   }
 }
 
@@ -97,17 +96,15 @@ $(document).ready(function(){
   //
   // game.start();
   // var trackOne = document.getElementById("player1_strip")
-  var playerOneName = $('#player1_strip').data("player-one")
-  var playerTwoName = $('#player2_strip').data("player-two")
-
-  var playerOneAvatar = $('#player1_strip').data("avatar-image")
-  var playerTwoAvatar = $('#player2_strip').data("avatar-image")
+  // var playerTwoName = $('#player2_strip').data("player-two")
 
   var track1 = new Track("#player1_strip")
   var track2 = new Track("#player2_strip")
 
-  var players = [new Player(playerOneName, playerOneAvatar, track1, 65),
-                 new Player(playerTwoName, playerTwoAvatar, track2, 80)]
+  player1 = new Player(track1, 65)
+  player2 = new Player(track2, 80)
+  var players = [player1, player2]
+
   var game = new Game(players)
 
   $('#start_game').on("click", function(){

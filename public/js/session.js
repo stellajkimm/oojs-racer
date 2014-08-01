@@ -42,9 +42,11 @@ $(document).ready(function(){
       }
     })
   })
+
+  // appends avatar image_url to player
   $('#avatar1 .choose-avatar div').on('click', function(){
       $(this).parent().parent().css('visibility', 'hidden');
-      console.log($(this).children().attr('src'))
-
+      player1.avatar = $(this).children().attr('src')
+      $('#player1_strip td:first-child').append('<img src="' + player1.avatar + '" height="42" width="42" >')
   })
 })
