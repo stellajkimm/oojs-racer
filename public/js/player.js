@@ -63,7 +63,7 @@ Game.prototype = {
       url: "/game",
       data: this.scores,
     }).done(function(response){
-
+      $('body').html(response)
     }).fail(function(response){
 
     })

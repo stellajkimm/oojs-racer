@@ -17,7 +17,7 @@ post '/game' do
     @game.played_games.create(user_id: @user_one.id, score: params[@user_one.name], avatar_id: 1, won: false)
     @game.played_games.create(user_id: @user_two.id, score: params[@user_two.name], avatar_id: 2, won: true)
   end
-  redirect '/scorescreen'
+  erb :score_screen, layout: false
 end
 
 get '/scorescreen' do
