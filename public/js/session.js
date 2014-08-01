@@ -42,4 +42,9 @@ $(document).ready(function(){
       }
     })
   })
+  $('#avatar1 .choose-avatar div').on('click', function(){
+      $(this).parent().parent().css('visibility', 'hidden');
+      console.log($(this).children().attr('src'))
+
+  })
 })
