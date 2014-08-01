@@ -4,7 +4,7 @@ end
 
 post '/login' do
   @user_one = User.find_by(email: params[:email])
-  p @user_one
+  # p @user_one
   if @user_one && @user_one.authenticate(params[:password])
     session[:user_one] = @user_one.id
     # @user_one.played_games.new(avatar_id: params[:avatar])

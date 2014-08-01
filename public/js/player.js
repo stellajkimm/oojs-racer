@@ -1,6 +1,7 @@
-function Player(track, keyCode){
+function Player(playerName, track, keyCode){
   this.avatar = "";
   this.position = 1;
+  this.name = playerName
   this.track = track
   this.keyCode = keyCode
   }
@@ -64,6 +65,7 @@ Game.prototype = {
   recordScores: function() {
     for(i=0; i < this.players.length; i++){
       this.scores[this.players[i].name] = this.players[i].position
+      console.log(this.scores)
     }
     this.sendScore();
   },
@@ -74,7 +76,8 @@ Game.prototype = {
       url: "/game",
       data: this.scores,
     }).done(function(response){
-      // $('body').html(response)
+      console.log(response)
+      $('body').html(response)
       console.log(response.success)
     }).fail(function(response){
 
@@ -92,18 +95,12 @@ Game.prototype = {
 
 
 $(document).ready(function(){
-  // var players = [ new Player('df', 'car'), new Player('fd', 'stella') ]
-  // var game = new Game(players)
-  //
-  // game.start();
-  // var trackOne = document.getElementById("player1_strip")
-  // var playerTwoName = $('#player2_strip').data("player-two")
 
   var track1 = new Track("#player1_strip")
   var track2 = new Track("#player2_strip")
 
-  player1 = new Player(track1, 65)
-  player2 = new Player(track2, 80)
+  player1 = new Player("armen", track1, 65)
+  player2 = new Player("stella", track2, 80)
   var players = [player1, player2]
 
   var game = new Game(players)

@@ -18,8 +18,7 @@
   <button id="reset_game">Reset Game</button>
 
   <table class="racer_table">
-    <tr id="player1_strip" data-player-one="<%= @player1.name %>" data-avatar="<%=@player1.played_games.last.avatar_id%>"
-      data-avatar-image="<%= @player1_avatar_image %>">
+    <tr id="player1_strip">
       <td class="active"></td>
       <td></td>
       <td></td>
@@ -42,8 +41,7 @@
       <td></td>
       <td></td>
     </tr>
-    <tr id="player2_strip" data-player-two="<%= @player2.name %>" data-avatar="<%=@player2.played_games.last.avatar_id%>"
-      data-avatar-image="<%= @player1_avatar_image %>">
+    <tr id="player2_strip">
       <td class="active"></td>
       <td></td>
       <td></td>
